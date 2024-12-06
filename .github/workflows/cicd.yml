@@ -66,7 +66,7 @@ jobs:
         context: .  # Set the build context (the current directory).
         file: ./DockerFile  # Specify the path to the Dockerfile.
         push: true  # Push the image to Docker Hub after building.
-        tags: ${{ secrets.DOCKER_USERNAME }}/flask-test-app:latest  # Tag the image with the username and latest tag.
+        tags: ${{ secrets.DOCKER_USERNAME }}/flasktest-app:latest  # Tag the image with the username and latest tag.
 
     - name: Image digest  # Print the image digest to confirm the image has been built.
       run: echo ${{ steps.build-and-publish.outputs.digest }}  # Output the image digest.
