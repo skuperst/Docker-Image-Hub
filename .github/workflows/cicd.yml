@@ -5,7 +5,7 @@ on:
     branches: [ main ]  # Trigger the workflow on push to the main branch.
   pull_request:
     branches: [ main ]  # Trigger the workflow on pull request to the main branch.
-#  workflow_dispatch:  # This allows you to manually trigger the workflow
+  workflow_dispatch:  # This allows you to manually trigger the workflow
 
 jobs:
   # Job for building the Docker image.
@@ -27,7 +27,7 @@ jobs:
     - name: Set up Python  # Set up Python environment.
       uses: actions/setup-python@v4  # Action for setting up Python.
       with:
-        python-version: 'latest'  # Automatically installs the latest Python version available.
+        python-version: '3.9'  # Automatically installs the latest Python version available.
 
     - name: Install dependencies  # Install the necessary dependencies for the app.
       run: |
@@ -42,7 +42,7 @@ jobs:
   # Job for building the Docker image and publishing it to Docker Hub.
   build-and-publish:
     needs: build-and-test  # This job will only run after the "build-and-test" job completes successfully.
-    runs-on: ubuntu-22.04 #ubuntu-latest  # Specify the runner environment.
+    runs-on: ubuntu-latest  # Specify the runner environment.
 
     steps:
     - name: Checkout code  # Checkout the code from the repository.
